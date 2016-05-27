@@ -10,7 +10,7 @@ un cuadernillo. Y se tiene un desconocimiento del total de salidas de vehículos
 concesionados realizadas, cotizaciones de las salidas de los vehículos y del
 verdadero dinero que se ganó en ellas.
 
-## Propuesta de solucion
+## Propuesta de solución
 
 Desarrollar un Sistema Gestión de Vehículos Concesionados que permita
 automatizar el registro de las salidas en el día realizadas por vehículos
