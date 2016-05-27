@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/05/2016 04:09:36 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Choferes" table="CHOFERES" schema="BD_CORACORA" optimistic-lock="version">
+        <id name="dniChofer" type="string">
+            <column name="DNI_CHOFER" length="7" />
+            <generator class="assigned" />
+        </id>
+        <property name="nomChofer" type="string">
+            <column name="NOM_CHOFER" length="25" not-null="true" />
+        </property>
+        <property name="apeChofer" type="string">
+            <column name="APE_CHOFER" length="25" not-null="true" />
+        </property>
+        <set name="vehiculoses" table="VEHICULOS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DNI_CHOFER" length="7" not-null="true" />
+            </key>
+            <one-to-many class="Modelo.Vehiculos" />
+        </set>
+    </class>
+</hibernate-mapping>

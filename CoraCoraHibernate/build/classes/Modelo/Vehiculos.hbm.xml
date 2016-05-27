@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27/05/2016 04:09:36 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Vehiculos" table="VEHICULOS" schema="BD_CORACORA" optimistic-lock="version">
+        <id name="placaVehiculo" type="string">
+            <column name="PLACA_VEHICULO" length="7" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="asociados" class="Modelo.Asociados" fetch="select">
+            <column name="DNI_ASOCIADO" length="7" not-null="true" />
+        </many-to-one>
+        <many-to-one name="choferes" class="Modelo.Choferes" fetch="select">
+            <column name="DNI_CHOFER" length="7" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cobradores" class="Modelo.Cobradores" fetch="select">
+            <column name="DNI_COBRADOR" length="7" not-null="true" />
+        </many-to-one>
+        <property name="modeloVehiculo" type="string">
+            <column name="MODELO_VEHICULO" length="25" not-null="true" />
+        </property>
+        <property name="anioVehiculo" type="string">
+            <column name="ANIO_VEHICULO" length="4" not-null="true" />
+        </property>
+        <property name="estadoVehiculo" type="string">
+            <column name="ESTADO_VEHICULO" length="25" />
+        </property>
+        <property name="dsanVehiculo" type="string">
+            <column name="DSAN_VEHICULO" length="2" />
+        </property>
+        <set name="quejases" table="QUEJAS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PLACA_VEHICULO" length="7" not-null="true" />
+            </key>
+            <one-to-many class="Modelo.Quejas" />
+        </set>
+        <set name="salidases" table="SALIDAS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PLACA_VEHICULO" length="7" not-null="true" />
+            </key>
+            <one-to-many class="Modelo.Salidas" />
+        </set>
+    </class>
+</hibernate-mapping>
